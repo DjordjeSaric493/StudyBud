@@ -34,6 +34,13 @@ fun DashboardScr(
                     ciljSati = "26"
                 )
             }
+            item {
+                SubjCardSec(
+                    modifier = Modifier.fillMaxWidth(),
+                    subjList = emptyList(),
+
+                )
+            }
         }
     }
 }
