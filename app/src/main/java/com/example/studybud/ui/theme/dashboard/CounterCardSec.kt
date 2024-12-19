@@ -3,6 +3,7 @@ package com.example.studybud.ui.theme.dashboard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,7 +28,6 @@ import com.example.studybud.R
 import com.example.studybud.model.Subject
 import com.example.studybud.ui.theme.components.CountCard
 import com.example.studybud.ui.theme.components.SubjCard
-import com.example.studybud.ui.theme.gradient1
 
 @Composable
 //ovde prikazuje ove kartice sa podacima, kolko sam učio i slično
@@ -102,14 +102,20 @@ fun SubjCardSec(
                 textAlign = TextAlign.Center
             )
         }
-        LazyRow {
+        LazyRow (
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(start = 8.dp, end = 10.dp)
+        ){
             items(subjList){
-                item: Subject ->
+                subject ->
                 SubjCard(
-                    modifier=Modifier,
-                    subjectName ="" ,
-                    gradientColors = gradient1,
-                ) { }
+                    modifier =Modifier,
+                    subjectName =subject.name ,
+                    gradientColors = subject.boje ,
+                    onClick = {
+
+                    }
+                )
             }
         }
     }
