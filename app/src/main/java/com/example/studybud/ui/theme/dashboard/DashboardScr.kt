@@ -4,11 +4,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.studybud.model.Subject
+import com.example.studybud.ui.theme.components.tasksList
 
 @Composable
 fun DashboardScr(
@@ -42,13 +45,28 @@ fun DashboardScr(
                     ciljSati = "26"
                 )
             }
-            item {
+            item {String
                 SubjCardSec(
                     modifier = Modifier.fillMaxWidth(),
                     subjList = subjects
-
                 )
             }
+            item {
+                Button(onClick = {},
+                    modifier=Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 48.dp,
+                            vertical=20.dp)) {
+                    Text(text= "Započni učenje")
+                }
+            }
+            tasksList(
+                sectionTItle ="SLEDEĆI ZADACI" ,
+                emptyListText = "Nemaš nijedan zadatak u planu\n"
+                        + "Klikni + dugme na ekranu da dodaš novi",
+                tasks= emptyList(), //
+            )
         }
     }
 }

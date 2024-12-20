@@ -58,13 +58,13 @@ fun CounterCardSec(
             modifier = Modifier
                 .weight(1.5f)
                 .fillMaxWidth(), // Dodao fillMaxWidth() kako bi CountCard zauzeo prostor predviđen za njega
-            headingText = "Planirani sati učenja", //koliko sati planiram da učim,
+            headingText = "Planirano ", //koliko sati planiram da učim,
             counter = ciljSati
         )
     }
 }
 @Composable
-fun SubjCardSec(
+fun  SubjCardSec(
     modifier: Modifier,
     subjList: List<Subject> ,//pravim listu predmeta
     emptyListText: String = "Nemaš kreirane predmete!\nKlikni + da dodaš novi"
