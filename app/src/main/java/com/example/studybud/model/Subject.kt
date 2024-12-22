@@ -9,7 +9,8 @@ import com.example.studybud.ui.theme.gradient5
 data class Subject(
     val name: String,
     val ciljSati: Float,
-    val boje: List<androidx.compose.ui.graphics.Color>
+    val colors: List<androidx.compose.ui.graphics.Color>,
+    val subjId: Int
 ){
     companion object{
         val subjectCardcolors = listOf(gradient1, gradient2, gradient3, gradient4, gradient5)

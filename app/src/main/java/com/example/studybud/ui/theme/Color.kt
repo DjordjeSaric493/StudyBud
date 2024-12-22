@@ -225,7 +225,7 @@ val surfaceContainerHighestDarkHighContrast = Color(0xFF33353A)
 val Red = Color(0xFFD53A2F)
 val Blue = Color(0xFF2965C9)
 val Green = Color(0xFF1E9651)
-val Orange = Color(0xFFFF9800)
+val Yellow = Color(0xFFF1DA05)
 
 val gradient1 = listOf(Color(0xFFad5389), Color(0xFF3c1053))
 val gradient2 = listOf(Color(0xFF3A6073), Color(0xFF16222A))

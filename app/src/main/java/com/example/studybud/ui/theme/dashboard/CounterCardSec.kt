@@ -111,7 +111,7 @@ fun  SubjCardSec(
                 SubjCard(
                     modifier =Modifier,
                     subjectName =subject.name ,
-                    gradientColors = subject.boje ,
+                    gradientColors = subject.colors ,
                     onClick = {
 
                     }

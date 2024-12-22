@@ -18,25 +18,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.studybud.R
-import com.example.studybud.model.Task
+import com.example.studybud.model.Session
 
+//spisak sesija učenja
+//SLIČNA LOGIKA KAO KOD TASKOVA,SAMO OVDE PRAVIM ŠTA JE UČENO
 
-fun LazyListScope.tasksList(
-    sectionTItle: String, //onaj title kod taska
-    emptyListText: String , //da ne peglam dvaput tekst već ovako elegant
-    tasks: List<Task>,
-    onTaskCardClick: (Int?)->Unit,
-    onCheckBoxClick:(Task?)->Unit
-    ) {
+fun LazyListScope.studySesList(
+    sectionTitle: String, //onaj title kod taska
+    emptyListText: String, //da ne peglam dvaput tekst već ovako elegant
+    sessions: List<Session>,
+    onDeleteIconClick:(Session)->Unit
+
+) {
     item {
         Text(
-            text = sectionTItle,
+            text = sectionTitle,
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.padding(12.dp)
 
         )
     }
-    if (tasks.isEmpty()) {
+    if ( sessions.isEmpty()) {
         item {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -45,7 +47,7 @@ fun LazyListScope.tasksList(
                 Image(
                     modifier = Modifier
                         .size(120.dp),
-                    painter = painterResource(R.drawable.img_tasks),
+                    painter = painterResource(R.drawable.img_lamp),
                     contentDescription = emptyListText
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -59,23 +61,15 @@ fun LazyListScope.tasksList(
             }
         }
     } //ako nije empty onda  prikazuješ -NE UNUTAR IF GRANE!!!!
-    items(tasks) { task ->
-        TaskCard(
-            modifier = Modifier.padding(
-                horizontal = 12.dp,
-                vertical = 4.dp
-            ),
-            task = task,
-            onCheckBoxClick = {
-                onCheckBoxClick(task) //Type mismatch.
-            },
-            onClick ={
-                onTaskCardClick(task.taskId)
-            }
-        )
+    items( sessions) { session ->
+    StudySessionCard(
+        modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
+        session = session,
+        //logika
+        onDeleteIconClick = {
+            onDeleteIconClick(session)
+        }
+    )
+
     }
 }
-
-
-
-

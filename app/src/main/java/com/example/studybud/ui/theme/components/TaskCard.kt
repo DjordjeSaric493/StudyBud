@@ -14,20 +14,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.studybud.model.Task
+import com.example.studybud.util.Priority
 
 @Composable
 fun TaskCard(
     modifier: Modifier=Modifier,
-    task: Task
+    task: Task,
+    onCheckBoxClick: ()->Unit,
+    onClick: ()->Unit
     ){
     //UI
     ElevatedCard(
-        modifier= modifier.clickable {}
+        modifier= modifier.clickable {
+         onClick()
+        }
     ){
         Row(modifier
             .fillMaxWidth()
@@ -35,9 +39,12 @@ fun TaskCard(
             verticalAlignment = Alignment.CenterVertically){
             TaskCheckBox(
                 isComplete = task.isComplete,
-                borderColor = Color.Black,
-                onCheckBoxClick ={} )
+                borderColor = Priority.fromInt(task.priority).color,
+                onCheckBoxClick =onCheckBoxClick
+             )
+
             Spacer(modifier=Modifier.width(10.dp))
+
             Column {
                 Text(
                     text=task.title,
@@ -52,7 +59,7 @@ fun TaskCard(
                 Spacer(
                     modifier = Modifier.height(4.dp)
                 )
-                Text(text="$(task.dueDate)",//konvertujem long u string, pogledaj model
+                Text(text="${task.dueDate}",//long u string, pogledaj model {$NEŠTO} pazi na zagrade
                     style = MaterialTheme.typography.bodySmall)
             }
         }
